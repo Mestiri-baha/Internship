@@ -137,7 +137,7 @@ buttons .k-card {
 .FavorisHorizon .k-card-header {
    border-color: transparent !important ; 
 }
-*/
+
 .FavorisHorizon .k-tilelayout {
     display: flex !important;
     flex-direction: column;
@@ -147,6 +147,21 @@ buttons .k-card {
 
 .FavorisHorizon .k-card-header {
     border-color: transparent !important;
+    padding-block : 0px !important ; 
 }
-
-*/
+.FavorisHorizon2 .k-card-header {
+    border-color: transparent !important;
+    padding-block: 0px !important;
+}
+.FavorisHorizon2 .k-tilelayout {
+    display: flex !important;
+    flex-direction: column;
+    background-color: transparent !important;
+}
+.FavorisHorizon2 .k-card-header {
+    border-color: transparent !important;
+    padding-block: 0px !important;
+}
+.FavorisHorizon2 .k-card-title {
+    display: none !important;
+}
