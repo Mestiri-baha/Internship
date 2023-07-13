@@ -1,0 +1,30 @@
+﻿
+<div  class="Card">
+<TelerikTileLayout Columns="2"
+                   RowHeight="1fr"
+                   ColumnWidth="2fr"
+                   Resizable="true"
+                   Reorderable="true">
+    <TileLayoutItems>
+  <TileLayoutItem class="RemoveSpace" ColSpan="2" RowSpan="2">
+            <Content>
+                <TelerikGrid Data="@GridData"
+             Pageable="true"
+             Sortable="true"
+             >
+    <GridColumns>
+        <GridColumn Field="Name" Title="Product Name" />
+      
+        <GridColumn Field="Test" />
+    </GridColumns>
+</TelerikGrid>
+</Content>
+        </TileLayoutItem>
+     
+    </TileLayoutItems>
+</TelerikTileLayout>
+</div>
+@code {
+      private List<int> GridData { get; set; }
+
+}

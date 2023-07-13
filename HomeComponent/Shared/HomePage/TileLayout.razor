@@ -1,0 +1,72 @@
+﻿
+<!--Customizing the columns number  & the rows height -->
+
+@code {
+    string MyColor { get; set; }
+}
+<div class="Vignettes">
+ <h1 style="font-size: medium;
+    margin-bottom: 3rem; margin-top: 1rem;
+    margin-left: 1rem; "> Controles a Realiser</h1>
+<TelerikTileLayout Columns="@numberofColumns" 
+                   Class="task-list"
+                   ColumnWidth="14rem"
+                   RowHeight="10rem"
+                   Resizable="true"
+                   Reorderable="true"
+                   RowSpacing="1px"
+                   
+                   >
+
+<!--we will make it dynamic class="Width : 1fr" -->
+
+    <TileLayoutItems>
+        <div style="display: flex; ">
+         
+            <TelerikButton Icon="@FontIcon.Plus" OnClick="AddChildComponent" ThemeColor="success"> </TelerikButton>
+       
+        
+            <TelerikButton Icon="@FontIcon.Minus" OnClick="RemoveChildComponent" ThemeColor="primary"> </TelerikButton>
+            <TelerikColorPicker @bind-Value="@MyColor" ValueFormat="ColorFormat.Hex"/>
+
+             <!-- text showing the color value ! <p>Selected color: <span style="color: @MyColor">@MyColor</span></p>-->
+
+    
+        </div>
+        @foreach ( var childcomponent in childComponents )
+            {
+               <TileLayoutItem HeaderText="" RowSpan="1">
+                <Content>It depends </Content>
+                </TileLayoutItem>
+            }
+        </TileLayoutItems>
+</TelerikTileLayout>
+</div>
+  <style>
+                      .CardsTile .k-tilelayout {
+               background-color : transparent ; 
+           }
+            .task-list
+            {
+
+                gap: 1px 5px;
+                padding: 0px 0px;
+                 max-width : 1455px  ; 
+                width: 100% ; 
+                overflow-x : auto ; 
+                display: flex ; 
+            }
+            .task-list::-webkit-scrollbar {
+                display: none; 
+                width: 0;  /* Remove scrollbar space */
+                background: transparent;  /* Optional: just make scrollbar invisible */
+}
+            .task-list > div {
+             /*   aspect-ratio : 1 ; */
+                min-width : 160px ; 
+            }
+            
+            /* padding: 1px 8px; */"
+        </style>
+
+<!--  Headers will be generic !! they depend on the project -->

@@ -1,0 +1,49 @@
+﻿
+.first-parent-container {
+    display : flex ; 
+    width : 100% ; 
+}
+.right-card-component {
+min-width : 300px ; 
+width : 300px ; 
+}
+.left-container {
+    display: flex;
+    width: calc(100% - 300px);
+ flex-direction: column;
+}
+.scrolling-container {
+    display: flex;
+    width: 100% ;
+}
+.buttons-card-container {
+    display : flex ; 
+    gap: 16px ; 
+    width : 100% ; 
+}
+.card {
+    width : 49% ; 
+}
+.buttons {
+    width : 49% ; 
+}
+.second-parent-container {
+    display : flex ; 
+    width : 100% ; 
+    gap: 16px ; 
+    
+}
+.favoris1 {
+    width: 49%;
+}
+.favoris2 {
+    width: 49%;
+}
+.card { 
+    border : none ; 
+}
+
+
+    
+    
+

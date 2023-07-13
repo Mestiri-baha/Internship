@@ -1,0 +1,70 @@
+﻿
+<div class="CardsTile">
+
+    <h1 style="font-size: medium;
+    margin-bottom: 3rem;
+    margin-top: 2rem; margin-left: 1rem; "> Controles a Realiser</h1>
+
+<TelerikTileLayout Columns="8"
+                    Class="task-list1"
+                  ColumnWidth="10rem"
+                   RowHeight="10rem"
+                   Resizable="true"
+                   RowSpacing="0px"
+                   Reorderable="true">
+    <TileLayoutItems>
+        <TileLayoutItem Class=".Child" HeaderText="Tile 1">
+            <Content>Regular-sized first tile.</Content>
+        </TileLayoutItem>
+        <TileLayoutItem Class=".Child" HeaderText="Tile 2">
+            <Content>You can put components in the tiles too.</Content>
+        </TileLayoutItem>
+        <TileLayoutItem Class=".Child" HeaderText="Tile 3">
+            <Content>This tile is three rows tall.</Content>
+        </TileLayoutItem>
+        <TileLayoutItem Class=".Child" HeaderText="Tile 4">
+            <Content>This tile is two rows tall and two colu</Content>
+        </TileLayoutItem>
+        <TileLayoutItem Class=".Child" HeaderText="Tile 5">
+            <Content>Regular-sized first tile.</Content>
+        </TileLayoutItem>
+        <TileLayoutItem Class=".Child" HeaderText="Tile 6">
+            <Content>You can put components in the tiles too.</Content>
+        </TileLayoutItem>
+        <TileLayoutItem Class=".Child" HeaderText="Tile 7" >
+            <Content>This tile is three rows tall.</Content>
+        </TileLayoutItem>
+        <TileLayoutItem Class=".Child" HeaderText="Tile 8">
+            <Content>This tile is two rows tall and two columns wide</Content>
+        </TileLayoutItem>
+    </TileLayoutItems>
+</TelerikTileLayout>
+
+</div>
+        <style>
+           .CardsTile .k-tilelayout {
+               background-color : transparent ; 
+           }
+            .task-list1
+            {
+                
+                 max-width : 1455px  ; 
+                /*min-width : 400px  ; */
+                width: 100% ; 
+                overflow-x : auto ; 
+                display: flex ; 
+            }
+            .task-list1::-webkit-scrollbar {
+                display: none; 
+                width: 0;  /* Remove scrollbar space */
+                background: transparent;  /* Optional: just make scrollbar invisible */
+}
+            .task-list1 > div {
+                /*aspect-ratio : 1 ; */
+                min-width : 185px ; 
+*/            }
+              .Child 
+              {
+                  padding : 0 ; 
+              }
+        </style>
