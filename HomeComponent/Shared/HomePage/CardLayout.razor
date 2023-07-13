@@ -8,16 +8,38 @@
     <TileLayoutItems>
   <TileLayoutItem class="RemoveSpace" ColSpan="2" RowSpan="2">
             <Content>
-                <TelerikGrid Data="@GridData"
-             Pageable="true"
-             Sortable="true"
-             >
-    <GridColumns>
-        <GridColumn Field="Name" Title="Product Name" />
+                @* Split the items in the GridLayout in three columns and two rows. *@
+
+<TelerikGridLayout>
+    <GridLayoutColumns>
+        <GridLayoutColumn Width="1.3fr"></GridLayoutColumn>
+        <GridLayoutColumn Width="1.3fr"></GridLayoutColumn>
+        <GridLayoutColumn Width="1.3fr"></GridLayoutColumn>
+    </GridLayoutColumns>
+    <GridLayoutRows>
+        <GridLayoutRow Height="1fr"></GridLayoutRow>
+    </GridLayoutRows>
+    <GridLayoutItems>
+        <GridLayoutItem>
+            <div style="border: 1px gray solid;">
+               Date
+            </div>
+        </GridLayoutItem>
+        <GridLayoutItem>
+            <div style="border: 1px gray solid;">
+              Type
+            </div>
+        </GridLayoutItem>
+        <GridLayoutItem>
+            <div style="border: 1px gray solid;">
+             Num fiche
+            </div>
+        </GridLayoutItem>
+        
       
-        <GridColumn Field="Test" />
-    </GridColumns>
-</TelerikGrid>
+    </GridLayoutItems>
+</TelerikGridLayout>
+  
 </Content>
         </TileLayoutItem>
      

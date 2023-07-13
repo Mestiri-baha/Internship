@@ -62,9 +62,10 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
-/*.buttons .k-tilelayout {
+.buttons .k-tilelayout {
     background-color: transparent;
-}*/
+   /* padding: 4px !important;*/
+}
 .buttons .k-card-body {
     display : contents !important;
     /*padding-inline : 0px !important ; */
@@ -103,15 +104,18 @@ a, .btn-link {
 .Card .k-card-body {
     padding-block : 0px ; 
 }
-.Card .k-tilelayout
+./*Card .k-tilelayout
 {
     background-color: #fafafa;
-}
+}*/
 .Card .k-grid .k-grid-header {
     border-bottom-width: 1px; 
 }
 .Card .k-tilelayout {
     background-color: transparent;
+    padding: 4px !important ; 
+
+    /*padding-top: 5px !important ; */
 }
 .ApiCard .k-tilelayout {
     background-color:  transparent;
@@ -164,4 +168,9 @@ buttons .k-card {
 }
 .FavorisHorizon2 .k-card-title {
     display: none !important;
+}
+.buttons .k-tilelayout .k-card {
+    box-shadow: none;
+    border-width: 0.01px;
+    border-color: green;
 }
