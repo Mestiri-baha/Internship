@@ -146,6 +146,7 @@ buttons .k-card {
     display: flex !important;
     flex-direction: column;
     background-color: transparent !important;
+    gap: 0px !important;
 }
 
 
@@ -161,6 +162,7 @@ buttons .k-card {
     display: flex !important;
     flex-direction: column;
     background-color: transparent !important;
+    gap: 0px !important;
 }
 .FavorisHorizon2 .k-card-header {
     border-color: transparent !important;
@@ -173,4 +175,11 @@ buttons .k-card {
     box-shadow: none;
     border-width: 0.01px;
     border-color: green;
+}
+.CardsTile .k-tilelayout {
+    background-color: transparent;
+    gap: 0px 3px !important;
+}
+.Vignettes .k-tilelayout {
+    gap: 1px 3px !important;
 }
