@@ -1,33 +1,23 @@
 ﻿
 <div> 
         <h1 style="font-size: medium;
-   margin-bottom: 20px;
-    margin-left: 1rem;
-    margin-top: 15px;">Mes Liste de Favoris</h1>
-        <div class="FavorisHorizon">
-<TelerikTileLayout Columns="4"
-                 RowHeight="1fr"
-                   ColumnWidth="2fr"
-                   Resizable="true"
-               
-                   Reorderable="true">
-    <TileLayoutItems>
-              <TileLayoutItem HeaderText="">
-            <Content>Regular-sized first tile.</Content>
-        </TileLayoutItem>
-        <TileLayoutItem HeaderText="">
-            <Content>You can put components in the tiles too.</Content>
-        </TileLayoutItem>
-        <TileLayoutItem HeaderText="" RowSpan="1">
-            <Content>This tile is three rows tall.</Content>
-        </TileLayoutItem>
-        <TileLayoutItem HeaderText="" RowSpan="1" ColSpan="1">
-            <Content>This tile is two rows tall and two columns wide</Content>
-        </TileLayoutItem>
-
-    </TileLayoutItems>
-</TelerikTileLayout>
-</div>
+                           /*margin-bottom: 20px;*/
+                            margin-left: 1rem;
+                            margin-top: 15px;">
+       @Title
+         </h1>
+         <div class="FavorisHorizon">
+        <TelerikTileLayout Columns="4" RowHeight="1fr" ColumnWidth="2fr" Resizable="true" Reorderable="true">
+            <TileLayoutItems>
+                @foreach (var item in Etats)
+                {
+                    <TileLayoutItem HeaderText="">
+                        <Content>@item</Content>
+                    </TileLayoutItem>
+                }
+            </TileLayoutItems>
+        </TelerikTileLayout>
+        </div>
 </div>
 
 

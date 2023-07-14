@@ -1,5 +1,8 @@
 ﻿
 <div  class="Card">
+    <h1 style="font-size : medium ; padding-top: 10px; padding-left: 1rem ;">
+        Historique
+    </h1>
 <TelerikTileLayout Columns="2"
                    RowHeight="1fr"
                    ColumnWidth="2fr"
@@ -46,7 +49,9 @@
     </TileLayoutItems>
 </TelerikTileLayout>
 </div>
-@code {
-      private List<int> GridData { get; set; }
 
+@code {
+    private List<int> GridData { get; set; }
+    [Parameter]
+    public string Title { get; set; }
 }

@@ -1,25 +1,32 @@
 ﻿<div class="buttons"> 
-
+ <div class="labels">
+<h1 style="font-size : medium ; ">
+    Emprunts
+</h1>
+<h1 style="font-size : medium ; ">
+    Couvertures
+</h1>
+</div>
 
 <TelerikTileLayout Columns="2"
                     
                    RowHeight="1fr"
                  Class="test"
-                   Resizable="true"
+                   Resizable="false"
                    Reorderable="true">
  <TileLayoutItems>
  
         <TileLayoutItem>
-            <Content><a href="#" class="custom-button">Button</a></Content>
+            <Content><a href="#" class="custom-button">Button1</a></Content>
         </TileLayoutItem>
         <TileLayoutItem >
-            <Content><a href="#" class="custom-button">Button</a></Content>
+            <Content><a href="#" class="custom-button">Button2</a></Content>
         </TileLayoutItem>
         <TileLayoutItem >
-            <Content><a href="#" class="custom-button">Button</a></Content>
+            <Content><a href="#" class="custom-button">Button3</a></Content>
         </TileLayoutItem>
          <TileLayoutItem >
-            <Content><a href="#" class="custom-button">Button</a></Content>
+            <Content><a href="#" class="custom-button">Button4</a></Content>
         </TileLayoutItem>
 
 
@@ -54,6 +61,13 @@
   .custom-button:hover {
     background: green;
     color: white;
+  }
+  .labels {
+      display : flex ; 
+      flex-direction : row ; 
+      justify-content : space-between ; 
+      padding-top: 10px;
+       padding-inline: 20px;
   }
 </style>
 @code { 

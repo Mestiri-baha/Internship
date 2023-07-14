@@ -14,18 +14,27 @@ width : 300px ;
 }
 .scrolling-container {
     display: flex;
-    width: 100% ;
+    width: 100%;
+    border: 2px solid black;
+}
+.scrolling-container-2 {
+    border: 2px solid black;
+    margin-top: 2rem;
 }
 .buttons-card-container {
-    display : flex ; 
-    gap: 16px ; 
-    width : 100% ; 
+    display: flex;
+    gap: 16px;
+    width: 100%;
 }
 .card {
-    width : 49% ; 
+    width: 49%;
+    border: 2px solid black !important ;
+    margin-bottom: 2rem;
 }
 .buttons {
-    width : 49% ; 
+    width: 49%;
+    border: 2px solid black;
+    margin-bottom: 2rem;
 }
 .second-parent-container {
     display : flex ; 
@@ -35,12 +44,16 @@ width : 300px ;
 }
 .favoris1 {
     width: 49%;
+    border: 2px solid black;
+    margin-top: 2rem; 
 }
 .favoris2 {
     width: 49%;
+    border: 2px solid black;
+    margin-top: 2rem;
 }
-.card { 
-    border : none ; 
+.card {
+    border: none;
 }
 
 
