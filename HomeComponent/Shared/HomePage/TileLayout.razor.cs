@@ -5,25 +5,19 @@ namespace HomeComponent.Shared.HomePage
 {
     public partial class TileLayout
     {
-        private class ApiData {
+        public partial  class Vignette {
 
-            public String HeaderText { get; set; }
+            public String Header { get; set; }
             public String Content { get; set; }
-
-
         }
-
         [Parameter]
         public int numberofColumns { get; set; }
-        public List<TileLayoutItem> childComponents = new List<TileLayoutItem>();
+        [Parameter]
+        public string Tile_layout_title { get; set; }
+        [Parameter]
+        public List<Vignette> childComponents { get; set; }  = new List<Vignette>();
         //we won't use it ! i think ! 
-        private void AddChildComponent()
-        {
-            childComponents.Add(new TileLayoutItem());
-            numberofColumns++;
-            Console.WriteLine(MyColor);
-            StateHasChanged();
-        }
+        
         private void RemoveChildComponent()
         {
             childComponents.Remove(childComponents.LastOrDefault());

@@ -10,20 +10,20 @@
             <HomeComponent.Shared.HomePage.ButtonsLayout />
             </div>
             <div class="card">
-            <HomeComponent.Shared.HomePage.CardLayout  Title="testing"/>
+            @CardDynamic
             </div>
         </div>
         <div class="scrolling-container">
-            <HomeComponent.Shared.HomePage.TileLayout />
+            @Vignettes
         </div>
         <div class="scrolling-container-2">
-              <HomeComponent.Shared.HomePage.CardsTileLayout/>
+        @Controls
         </div>
         <div class="second-parent-container">
-  <div class="favoris1">
+         <div class="favoris1">
         @FavListRf
-  </div>
-  <div class="favoris2">
+        </div>
+        <div class="favoris2">
         @FavEtatRf 
   </div>
 </div>

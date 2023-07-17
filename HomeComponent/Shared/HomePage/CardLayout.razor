@@ -1,7 +1,7 @@
 ﻿
 <div  class="Card">
     <h1 style="font-size : medium ; padding-top: 10px; padding-left: 1rem ;">
-        Historique
+        @CardLabel
     </h1>
 <TelerikTileLayout Columns="2"
                    RowHeight="1fr"
@@ -15,31 +15,26 @@
 
 <TelerikGridLayout>
     <GridLayoutColumns>
-        <GridLayoutColumn Width="1.3fr"></GridLayoutColumn>
-        <GridLayoutColumn Width="1.3fr"></GridLayoutColumn>
-        <GridLayoutColumn Width="1.3fr"></GridLayoutColumn>
+        @foreach (var columnName in DynamicColumns)
+        {
+             <GridLayoutColumn Width="1.3fr"></GridLayoutColumn>
+        }
+       
     </GridLayoutColumns>
     <GridLayoutRows>
         <GridLayoutRow Height="1fr"></GridLayoutRow>
     </GridLayoutRows>
     <GridLayoutItems>
-        <GridLayoutItem>
+        @foreach (var columnName in DynamicColumns)
+        {
+             <GridLayoutItem>
             <div style="border: 1px gray solid;">
-               Date
+               @columnName
             </div>
         </GridLayoutItem>
-        <GridLayoutItem>
-            <div style="border: 1px gray solid;">
-              Type
-            </div>
-        </GridLayoutItem>
-        <GridLayoutItem>
-            <div style="border: 1px gray solid;">
-             Num fiche
-            </div>
-        </GridLayoutItem>
-        
-      
+        }
+       
+    
     </GridLayoutItems>
 </TelerikGridLayout>
   
