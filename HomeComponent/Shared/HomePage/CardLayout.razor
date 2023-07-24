@@ -17,18 +17,20 @@
     <GridLayoutColumns>
         @foreach (var columnName in DynamicColumns)
         {
-             <GridLayoutColumn Width="1.3fr"></GridLayoutColumn>
+             <GridLayoutColumn Width="1.3fr">
+                    
+             </GridLayoutColumn>
         }
        
     </GridLayoutColumns>
-    <GridLayoutRows>
-        <GridLayoutRow Height="1fr"></GridLayoutRow>
+    <GridLayoutRows >
+        <GridLayoutRow Height="1rem"></GridLayoutRow>
     </GridLayoutRows>
     <GridLayoutItems>
         @foreach (var columnName in DynamicColumns)
         {
              <GridLayoutItem>
-            <div style="border: 1px gray solid;">
+            <div style="border: none ; ">
                @columnName
             </div>
         </GridLayoutItem>
@@ -50,3 +52,7 @@
     [Parameter]
     public string Title { get; set; }
 }
+<style>
+     .RemoveSpace {
+         border:none !important }
+</style>

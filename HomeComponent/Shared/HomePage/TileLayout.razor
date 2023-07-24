@@ -1,47 +1,21 @@
-﻿
-<!--Customizing the columns number  & the rows height -->
-
-@code {
-    string MyColor { get; set; }
-}
-<div class="Vignettes">
-    <div style="display : flex ; row-gap: 10px  ">
- <h1 style="font-size: medium;
-    margin-bottom: 22px;
-    margin-top: 10px; margin-right : 2rem  ; 
-    margin-left: 1rem; "> <TelerikFontIcon Icon="@FontIcon.Search" Size="md"/> @Tile_layout_title</h1>
+﻿<div class="Vignettes">
+<div style="display : flex ; row-gap: 10px  ">
+@CreateTitleContent()
  <span>
-     <TelerikButton Icon="@FontIcon.Minus" OnClick="RemoveChildComponent" ThemeColor="primary"> </TelerikButton>
-  </span>
-  </div>
-
-<TelerikTileLayout Columns="@numberofColumns" 
-                   Class="task-list"
-                   ColumnWidth="14rem"
-                   RowHeight="10rem"
-                   Resizable="true"
-                   Reorderable="true"
-                   RowSpacing="1px"
-                  >
-
-<!--we will make it dynamic class="Width : 1fr" -->
-
-    <TileLayoutItems>
-        <div style="display: flex; ">
-             <!-- text showing the color value ! <p>Selected color: <span style="color: @MyColor">@MyColor</span></p>-->
-        </div>
-        @foreach ( var Data in childComponents )
-            {
-               <TileLayoutItem HeaderText=@Data.Header RowSpan="1">
-                <Content>@Data.Content</Content>
-                </TileLayoutItem>
-            }
-        </TileLayoutItems>
-</TelerikTileLayout>
+  @*   <TelerikButton Icon="@FontIcon.Minus" OnClick="RemoveChildComponent" ThemeColor="secondary"> </TelerikButton>
+     <TelerikButton Icon="@FontIcon.Plus" OnClick="AddChildComponent" ThemeColor="primary"> </TelerikButton>*@
+</span>
 </div>
+    @CreateHeaderContent()
+</div>
+
   <style>
       .Vignettes {
           width: 100%; 
+      }
+      .k-tilelayout-item-header.k-card-header {
+            padding-block: 0px;
+            padding-inline: 0px;
       }
                       .CardsTile .k-tilelayout {
                background-color : transparent ; 
@@ -65,8 +39,18 @@
              /*   aspect-ratio : 1 ; */
                 min-width : 160px ; 
             }
-            
-            /* padding: 1px 8px; */"
+            /*.childElement {
+                padding: 1px 5px ; 
+                margin-bottom: 14px ; 
+            }*/ 
+            .iconcontainer {
+                            max-width: 4rem;
+                            max-height: 4rem;
+                            display: block;
+                            margin-left: auto;
+                            margin-right: auto; 
+            }
+           .custom-font-icon-class {
+    margin-right: 10px;
+}
         </style>
-
-<!--  Headers will be generic !! they depend on the project -->

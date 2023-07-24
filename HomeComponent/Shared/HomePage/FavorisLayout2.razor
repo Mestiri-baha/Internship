@@ -1,23 +1,7 @@
 ﻿<!--This is the "List_favoris des favoris " Component -->
-<div>
-    <h1 style="font-size: medium;
-                        margin-left: 1rem;
-                         margin-top: 15px;
-     ">$" @Icon  "+ @Fav_Title2</h1>
-              <div class="FavorisHorizon2">
-        <TelerikTileLayout Columns="4"
-                           RowHeight="1fr"
-                           ColumnWidth="2fr"
-                           Resizable="true"
-                           Reorderable="true">   
-            <TileLayoutItems>
-                @foreach (var item in Fav_List2)
-                {
-                        <TileLayoutItem HeaderText="">
-                    <Content>@item</Content>
-                        </TileLayoutItem>
-                }  
-            </TileLayoutItems>
-        </TelerikTileLayout>
-        </div>
-</div>
+@CreateStateListContent() 
+<style>
+       .tile-items-style2 .k-card-body {
+          padding-block : 10px ;
+      }
+</style>

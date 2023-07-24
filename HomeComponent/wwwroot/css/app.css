@@ -80,9 +80,9 @@ a, .btn-link {
 .CardsTile .k-tilelayout {
     background-color: #fafafa;
 }
-    .CardsTile .k-tilelayout .k-card {
-        border-width: 6px
-    }
+   /* .CardsTile .k-tilelayout .k-card {
+        border-width: 2px !important ; 
+    }*/
 .CardsTile element.style {
     gap: 0px 4px;
 }
@@ -113,12 +113,13 @@ a, .btn-link {
 }
 .Card .k-tilelayout {
     background-color: transparent;
-    padding: 4px !important ; 
-
+    padding: 4px !important;
+    font-weight: 800; 
     /*padding-top: 5px !important ; */
 }
 .ApiCard .k-tilelayout {
     background-color:  transparent;
+    box-shadow: none ;
 }
 .Card .k-card-header {
     display: none ; 
@@ -182,4 +183,17 @@ buttons .k-card {
 }
 .Vignettes .k-tilelayout {
     gap: 1px 3px !important;
+}
+
+Grid-style .k-card {
+    border: none !important;
+    font-weight: 700 !important;
+}
+.ApiCard .k-card-header {
+    padding-block: 0px !important;
+    border: transparent !important;
+}
+.tilelayout_header .k-card-header {
+    padding-block: 0px !important;
+    padding-inline: 0px !important;
 }

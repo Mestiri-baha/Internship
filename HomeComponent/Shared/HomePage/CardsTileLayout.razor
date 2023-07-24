@@ -1,32 +1,11 @@
-﻿<div class='CardsTile'>
-    <h1 style="font-size: medium;
-    margin-top: 20px; margin-left: 1rem; "> @Cards_Tile_Title</h1>
-
-<TelerikTileLayout Columns="8"
-                    Class="task-list1"
-                   ColumnWidth="3fr"
-                   RowHeight="3fr"
-                   Resizable="true"
-                   RowSpacing="0px"
-                   Reorderable="true"> 
-    <TileLayoutItems>
-        @foreach (var item in  CardProperties ) 
-        {
-               <TileLayoutItem Class=".Child" HeaderText="Tile 1">
-            <Content>@item.Cards_Tile_Label</Content>
-             
-
-                </TileLayoutItem>
-        }
-     
-     
-    </TileLayoutItems>
-</TelerikTileLayout>
-</div>
+﻿@CreateTileLayoutContent() ; 
         <style>
            .CardsTile .k-tilelayout {
                background-color : transparent ; 
            }
+            .CardsTile .k-tilelayout .k-card {
+        border-width: 2px !important ; 
+    }
             .task-list1
             {
                  max-width : 1455px  ; 
@@ -41,11 +20,13 @@
                 background: transparent;  
 }
             .task-list1 > div {
-               
                 min-width : 185px ; 
            }
               .Child 
               {
                   padding :  0px ; 
+              }
+              .custom-font-icon-class {
+               margin-right: 10px;
               }
         </style>
