@@ -7,60 +7,59 @@ namespace HomeComponent.Shared.HomePage
     public partial class APICardLayout
     {
         // Sample class to represent data for ApiCard
-        [Parameter]
-        public string ImageUrl { get; set; }
-        [Parameter]
-        public List<string> Updates { get; set; }
-        
-        public APICardLayout apiCardData ; // Single ApiCardData instance
-
-        // Load data from a JSON file (you can replace this with your actual data loading logic)
-        protected override async Task OnInitializedAsync()
+        [Parameter] public string ImageUrl { get; set; } = "https://cms-cdn.placeholder.co/Vancouver_87c09f1b29.png?width=384 1x, https://cms-cdn.placeholder.co/Vancouver_87c09f1b29.png?width=750 2x";
+        [Parameter] public List<string> Updates { get; set; }
+        List<string> updates = new List<string> {
+            "World Aquatics Championships: Ariarne Titmus and Leon Marchand break world records",
+            "Leon Marchand snatches Michael Phelps' last world record at swimming worlds" };
+        private RenderFragment CreateApiCard() => builder =>
         {
-            // Sample JSON data representing a single ApiCardData
-            var json = @"
-{
-    ""ImageUrl"": ""https://via.placeholder.com/300.png/09f/fff"",
-    ""Updates"": [
-        ""Update 1 for ApiCard"",
-        ""Update 2 for ApiCard"",
-        ""Update 3 for ApiCard""
-    ]
-}";
+            builder.OpenElement(0, "div");
+            builder.AddAttribute(1, "class", "ApiCard");
+            builder.OpenComponent<TelerikTileLayout>(2);
+            builder.AddAttribute(3, "Columns", 1);
+            builder.AddAttribute(4, "Class", "apicard-style");
+            builder.AddAttribute(5, "RowHeight", "600px");
+            builder.AddAttribute(6, "ColumnWidth", "20rem");
+            builder.AddAttribute(7, "Resizable", false);
+            builder.AddAttribute(8, "Reorderable", false);
+            builder.AddAttribute(10, "TileLayoutItems", (RenderFragment)((itemsBuilder) =>
+            {
+                itemsBuilder.OpenComponent<TileLayoutItem>(11);
+                itemsBuilder.AddAttribute(12, nameof(TileLayoutItem.RowSpan), 1);
+                itemsBuilder.AddAttribute(13, "HeaderTemplate", (RenderFragment)((headerBuilder) =>
+                {
+                    headerBuilder.OpenElement(14, "img");
+                    headerBuilder.AddAttribute(15, "src", ImageUrl);
+                    headerBuilder.AddAttribute(16, "alt", "Image");
+                    headerBuilder.CloseElement();
+                }));
+                itemsBuilder.AddAttribute(17, "Content",RenderDynamicContent(updates)); 
+                itemsBuilder.CloseComponent();
 
-        apiCardData = JsonSerializer.Deserialize<APICardLayout>(json);
-        }
-
-    private RenderFragment CreateApiCard() => builder =>
-    {
-        builder.OpenElement(0, "div");
-        builder.AddAttribute(1, "class", "ApiCard");
-
-        // Render the TelerikTileLayout
-        builder.OpenComponent<TelerikTileLayout>(2);
-        builder.AddAttribute(3, "Columns", 1);
-        builder.AddAttribute(4, "Class", "apicard-style");
-        builder.AddAttribute(5, "RowHeight", "600px");
-        builder.AddAttribute(6, "ColumnWidth", "20rem");
-        builder.AddAttribute(7, "Resizable", true);
-        builder.AddAttribute(8, "Reorderable", true);
-
-        // Render the single TileLayoutItem with the provided ApiCardData
-        builder.OpenComponent<TileLayoutItem>(9);
-        builder.AddAttribute(10, nameof(TileLayoutItem.RowSpan), 1);
-        builder.AddAttribute(11, "HeaderTemplate", (RenderFragment)((headerBuilder) =>
+            }));
+            builder.CloseComponent(); // Close the TelerikTileLayout component
+            builder.CloseElement(); // Close the <div class='ApiCard'> element
+        };
+         public RenderFragment RenderDynamicContent(List<string> data) => builder => 
         {
-            builder.OpenElement(12, "img");
-            builder.AddAttribute(13, "src", apiCardData.ImageUrl);
-            builder.AddAttribute(14, "alt", "Image");
-            builder.CloseElement();
-        }));
-        builder.AddAttribute(15, "Content", "baha");
-        builder.CloseComponent();
+            foreach(var item in data )
+            {
+                builder.OpenElement(0, "div");
+                builder.AddAttribute(1, "style", "font-size: 14px;");
+                builder.AddContent(2, item);
+                builder.OpenElement(3, "hr");
+                builder.CloseElement(); 
+                builder.CloseElement();
 
-        builder.CloseComponent(); // Close the TelerikTileLayout component
-        builder.CloseElement(); // Close the <div class='ApiCard'> element
-    };
+            }
+            builder.OpenElement(4, "Button");
+            builder.AddAttribute(5, "style", "color : #0047AB ; border-color: #0047AB ; background-color:transparent");
+            builder.AddContent(6, "Toutes Les Actualittés");
+            builder.CloseElement(); 
 
-}
+        }; 
+
+    }
+
 }

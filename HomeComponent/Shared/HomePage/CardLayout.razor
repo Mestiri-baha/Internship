@@ -1,58 +1,18 @@
-﻿
-<div  class="Card">
-    <h1 style="font-size : medium ; padding-top: 10px; padding-left: 1rem ;">
-        @CardLabel
-    </h1>
-<TelerikTileLayout Columns="2"
-                   RowHeight="1fr"
-                   ColumnWidth="2fr"
-                   Resizable="true"
-                   Reorderable="true">
-    <TileLayoutItems>
-  <TileLayoutItem class="RemoveSpace" ColSpan="2" RowSpan="2">
-            <Content>
-                @* Split the items in the GridLayout in three columns and two rows. *@
-
-<TelerikGridLayout>
-    <GridLayoutColumns>
-        @foreach (var columnName in DynamicColumns)
-        {
-             <GridLayoutColumn Width="1.3fr">
-                    
-             </GridLayoutColumn>
-        }
-       
-    </GridLayoutColumns>
-    <GridLayoutRows >
-        <GridLayoutRow Height="1rem"></GridLayoutRow>
-    </GridLayoutRows>
-    <GridLayoutItems>
-        @foreach (var columnName in DynamicColumns)
-        {
-             <GridLayoutItem>
-            <div style="border: none ; ">
-               @columnName
-            </div>
-        </GridLayoutItem>
-        }
-       
-    
-    </GridLayoutItems>
-</TelerikGridLayout>
-  
-</Content>
-        </TileLayoutItem>
-     
-    </TileLayoutItems>
-</TelerikTileLayout>
-</div>
-
-@code {
-    private List<int> GridData { get; set; }
-    [Parameter]
-    public string Title { get; set; }
-}
+﻿@RenderDynamicTable()
 <style>
      .RemoveSpace {
-         border:none !important }
+      border:none !important }
+      .cardlayout-style {
+       max-height : 170px ; 
+      }
+    .table-scroll {
+     overflow-y: auto;
+}
+    .table-scroll::-webkit-scrollbar {
+    display : none  ; 
+    background : transparent ; }
+    .custom-font-icon-class {
+    margin-right: 10px;
+}
+
 </style>

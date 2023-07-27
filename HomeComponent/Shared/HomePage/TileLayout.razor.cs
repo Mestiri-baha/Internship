@@ -22,8 +22,8 @@ namespace HomeComponent.Shared.HomePage
             builder.OpenComponent<TelerikTileLayout>(0);
             builder.AddAttribute(1, nameof(TelerikTileLayout.Columns), 5);
             builder.AddAttribute(2, nameof(TelerikTileLayout.Class), "task-list");
-            builder.AddAttribute(3, nameof(TelerikTileLayout.ColumnWidth), "14rem");
-            builder.AddAttribute(4, nameof(TelerikTileLayout.RowHeight), "10rem");
+            builder.AddAttribute(3, nameof(TelerikTileLayout.ColumnWidth), "20rem");
+            builder.AddAttribute(4, nameof(TelerikTileLayout.RowHeight), "14rem");
             builder.AddAttribute(5, nameof(TelerikTileLayout.Resizable), true);
             builder.AddAttribute(6, nameof(TelerikTileLayout.Reorderable), true);
             builder.AddAttribute(7, nameof(TelerikTileLayout.RowSpacing), "1px");
@@ -77,13 +77,12 @@ namespace HomeComponent.Shared.HomePage
         private RenderFragment CreateDynamicContent() => builder =>
         {
             builder.AddContent(0, "123");
-
             // Add a <br> element to separate the number and text content
             builder.OpenElement(1, "br");
             builder.CloseElement();
-
-            // Add the text content ("This is the text.") inside the contentBuilder
             builder.AddContent(2, "This is the text.");
+            builder.OpenElement(1, "br");
+            builder.CloseElement();
 
         };
 

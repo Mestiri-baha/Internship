@@ -28,13 +28,14 @@ width : 300px ;
 }
 .card {
     width: 49%;
-    border: 2px solid black !important ;
-    margin-bottom: 2rem;
+/*    border: 2px solid black !important ;
+*/    margin-bottom: 2rem;
 }
 .buttons {
+    /*it was before 49 % both of them */
     width: 49%;
-    border: 2px solid black;
-    margin-bottom: 2rem;
+   /* border: 2px solid black;*/
+    margin-bottom: 1rem;
 }
 .second-parent-container {
     display : flex ; 

@@ -26,7 +26,7 @@ a, .btn-link {
     outline: 1px solid #26b050;
 }
 
-.invalid {
+.invalid { 
     outline: 1px solid red;
 }
 
@@ -97,7 +97,6 @@ a, .btn-link {
     gap: 0px 4px !important;
     padding: 0px 0px !important;
 }
-
 .Vignettes .k-tilelayout .k-card {
     border-width: 2px
 }
@@ -136,9 +135,9 @@ a, .btn-link {
     flex-direction: column;
     background-color: transparent !important;
 }
-buttons .k-card {
+/*buttons .k-card {
     border : green ; 
-}
+}*/
 .FavorisHorizon .k-card-header {
    border-color: transparent !important ; 
 }
@@ -172,11 +171,10 @@ buttons .k-card {
 .FavorisHorizon2 .k-card-title {
     display: none !important;
 }
-.buttons .k-tilelayout .k-card {
-    box-shadow: none;
-    border-width: 0.01px;
-    border-color: green;
-}
+/*.buttons .k-tilelayout .k-card {
+    box-shadow: none; 
+    background-color : transparent !important ; 
+}*/
 .CardsTile .k-tilelayout {
     background-color: transparent;
     gap: 0px 3px !important;
@@ -196,4 +194,10 @@ Grid-style .k-card {
 .tilelayout_header .k-card-header {
     padding-block: 0px !important;
     padding-inline: 0px !important;
+}
+.buttons .k-tilelayout .k-card {
+    box-shadow: none;
+    border-width: 0px;
+    border-color: transparent ;
+    background-color: transparent  ;
 }

@@ -1,16 +1,15 @@
 ﻿@page "/"
 <!--this page "/" will make the page the default one -->
 @page "/HomeUI"
-
-<div class="first-parent-container">
-   
+<HomeComponent.Shared.HomePage.HomepageHeader></HomeComponent.Shared.HomePage.HomepageHeader>
+ <div class="first-parent-container">
     <div class="left-container">
         <div class="buttons-card-container">
             <div class="buttons">
             <HomeComponent.Shared.HomePage.ButtonsLayout />
             </div>
             <div class="card">
-            @CardDynamic
+            <HomeComponent.Shared.HomePage.CardLayout></HomeComponent.Shared.HomePage.CardLayout>
             </div>
         </div>
         <div class="scrolling-container">
@@ -28,9 +27,8 @@
  </div>
 </div>
  </div>
-
  <div class="right-card-component">
-        <HomeComponent.Shared.HomePage.APICardLayout />
+        <HomeComponent.Shared.HomePage.APICardLayout ></HomeComponent.Shared.HomePage.APICardLayout>
     </div>
 </div>
 

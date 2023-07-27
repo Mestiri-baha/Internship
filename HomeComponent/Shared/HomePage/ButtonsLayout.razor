@@ -1,75 +1,31 @@
-﻿<div class="buttons"> 
- <div class="labels">
-<h1 style="font-size : medium ; ">
-    Emprunts
-</h1>
-<h1 style="font-size : medium ; ">
-    Couvertures
-</h1>
-</div>
-
-<TelerikTileLayout Columns="2"
-                    
-                   RowHeight="1fr"
-                 Class="test"
-                   Resizable="false"
-                   Reorderable="true">
- <TileLayoutItems>
- 
-        <TileLayoutItem>
-            <Content><a href="#" class="custom-button">Button1</a></Content>
-        </TileLayoutItem>
-        <TileLayoutItem >
-            <Content><a href="#" class="custom-button">Button2</a></Content>
-        </TileLayoutItem>
-        <TileLayoutItem >
-            <Content><a href="#" class="custom-button">Button3</a></Content>
-        </TileLayoutItem>
-         <TileLayoutItem >
-            <Content><a href="#" class="custom-button">Button4</a></Content>
-        </TileLayoutItem>
-
-
-    </TileLayoutItems>
-  
-</TelerikTileLayout>
-</div>
-<style>
- 
-    
-    .test {
+﻿@RenderButtonsLayout()
+<style> 
+    .Buttons-component {
         background-color: transparent !important; 
-    }
-    .content {
-            border: 2px solid green;
-
+        gap : 10px !important ; 
     }
     .custom-button {
     display: inline-block;
-    padding: 10px 20px;
     background: transparent;
-   /* border-radius: 50px;*/
-   /* clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);*/
     text-align: center;
-    font-weight: bold;
+    font-weight: normal;
     font-size: 18px;
-    color: green;
     text-decoration: none;
     transition: background 0.3s, color 0.3s;
+    height: 3rem;
+    width: 11rem;
+    border-radius : 10px ; 
+    border-width : 1px ; 
+    
   }
-
-  .custom-button:hover {
-    background: green;
+  ./*custom-button:hover {
+    background: ButtonColor ;
     color: white;
+  }*/
+  .content-style {
+
   }
-  .labels {
-      display : flex ; 
-      flex-direction : row ; 
-      justify-content : space-between ; 
-      padding-top: 10px;
-       padding-inline: 20px;
+  .buttons {
+      background-color : white ; 
   }
 </style>
-@code { 
-   
-}
