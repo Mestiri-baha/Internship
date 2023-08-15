@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using HomeComponent.Model;
+using HomeComponent.Services;
+using Microsoft.AspNetCore.Components;
 using Telerik.Blazor.Components;
 using Telerik.FontIcons;
 using static Telerik.Blazor.ThemeConstants.Button;
@@ -8,7 +10,19 @@ namespace HomeComponent.Shared.HomePage
     public partial class FavorisLayout2
     {
         [Parameter]  public  string Fav_Title2 { get; set;  } = "My Tile Layout 2";
-         [Parameter] public List<string> Fav_List2 { get; set;  } = new List<string>
+        [Inject]
+        public HomeUIService _Service { get; set; }
+        HomeUIConfiguration data = new HomeUIConfiguration
+        {
+            Params = new List<Dictionary<string, object>>()
+        };
+        protected override async Task OnInitializedAsync()
+        {
+
+            data = await _Service.GetReportsAsync();
+
+        }
+        [Parameter] public List<string> Fav_List2 { get; set;  } = new List<string>
     {
         "etat 1",
         "etat 2",
@@ -48,7 +62,7 @@ namespace HomeComponent.Shared.HomePage
             // Render the TileLayoutItems based on the data from Fav_List2
             builder.AddAttribute(13, "TileLayoutItems", (RenderFragment)((itemsBuilder) =>
             {
-                foreach (var item in Fav_List2)
+                foreach (var item in data.Params)
                 {
                     itemsBuilder.OpenComponent<TileLayoutItem>(14);
                     itemsBuilder.AddAttribute(15, "HeaderText", "");
@@ -57,7 +71,7 @@ namespace HomeComponent.Shared.HomePage
                         contentBuilder.OpenElement(17, "a");
                         contentBuilder.AddAttribute(18, "href", "#");
                         contentBuilder.AddAttribute(19, "style", "text-decoration: inherit; color: inherit");
-                        contentBuilder.AddContent(20, item);
+                        contentBuilder.AddContent(20, item["label"]);
                         contentBuilder.CloseElement();
                     }));
                     itemsBuilder.CloseComponent();

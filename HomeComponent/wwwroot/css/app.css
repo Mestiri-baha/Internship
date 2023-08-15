@@ -120,6 +120,11 @@ a, .btn-link {
     background-color:  transparent;
     box-shadow: none ;
 }
+.ApiCard .k-tilelayout-item-body {
+    overflow: auto;
+    
+
+}
 .Card .k-card-header {
     display: none ; 
 }

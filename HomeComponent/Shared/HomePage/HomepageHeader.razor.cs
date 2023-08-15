@@ -1,14 +1,28 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using HomeComponent.Services;
+using Microsoft.AspNetCore.Components;
+using System.Net.Http;
+using System.Net.Http.Json;
 using Telerik.Blazor.Components;
 using Telerik.FontIcons;
+using Telerik.SvgIcons;
 using static Telerik.Blazor.ThemeConstants.Button;
 
 namespace HomeComponent.Shared.HomePage
 {
     public partial class HomepageHeader
     {
+        [Inject]
+        public HomeUIService _Service { get; set; }
         [Parameter] public string user { get; set;  }
-        private RenderFragment RenderUserInfo(string user)
+
+        protected override async Task OnInitializedAsync()
+        {
+           user =  await _Service.GetUserNameAsync();   
+
+        }
+    
+    
+        private RenderFragment RenderUserInfo()
         {
             RenderFragment fragment = builder =>
             {
@@ -41,17 +55,21 @@ namespace HomeComponent.Shared.HomePage
                 builder.AddContent(7, "Mon Compte Client");
                 builder.CloseElement();
                 builder.OpenElement(8, "h6");
-                builder.AddContent(9, "Salviedeveloppement.com");
+                builder.OpenElement(9, "a");
+                builder.AddAttribute(10, "href", "http://salviadeveloppement.com");
+                builder.AddAttribute(11, "style", "color : inherit ; text-decoration : none"); 
+                builder.AddContent(12, "salviadeveloppement.com");
+                builder.CloseElement();
                 builder.CloseElement();
                 // Render "Paramètres"
-                builder.OpenElement(10, "h6");
+                builder.OpenElement(13, "h6");
                 builder.OpenComponent<TelerikFontIcon>(4);
-                builder.AddAttribute(5, nameof(TelerikFontIcon.Icon), FontIcon.Gear);
-                builder.AddAttribute(6, nameof(TelerikFontIcon.Size), "md");
-                builder.AddAttribute(7, nameof(TelerikFontIcon.Class), "custom-font-icon-class ");
-                builder.AddAttribute(8, nameof(TelerikFontIcon.ThemeColor), ThemeColor.Base);
+                builder.AddAttribute(14, nameof(TelerikFontIcon.Icon), FontIcon.Gear);
+                builder.AddAttribute(15, nameof(TelerikFontIcon.Size), "md");
+                builder.AddAttribute(16, nameof(TelerikFontIcon.Class), "custom-font-icon-class ");
+                builder.AddAttribute(17, nameof(TelerikFontIcon.ThemeColor), ThemeColor.Base);
                 builder.CloseComponent();
-                builder.AddContent(11, "Paramètres");
+                builder.AddContent(18, "Paramètres");
                 builder.CloseElement();
 
                 builder.CloseElement(); // Close the div for the right-side section

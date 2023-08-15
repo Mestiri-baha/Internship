@@ -11,8 +11,23 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 //{
 //    Uri.baseAddress = new Uri("URI");
 //});
-//builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+//builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:54349/HomePage") });
 builder.Services.AddTelerikBlazor();
 
+builder.Services.AddHttpClient<HomeUIService>(
+    client =>
+    {
+        client.BaseAddress = new Uri("http://localhost:61893/HomePage");
+    });
+//builder.Services.AddCors(options =>
+//{
+//    options.AddDefaultPolicy(builder =>
+//    builder.WithOrigins("https://localhost:7194")
+//           .AllowAnyMethod()
+//           .AllowAnyHeader());
+//});
+//builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:54349") });
+//builder.Services.AddSingleton<HomeUIService>();
 
-await builder.Build().RunAsync();
+var app = builder.Build();
+await app.RunAsync();

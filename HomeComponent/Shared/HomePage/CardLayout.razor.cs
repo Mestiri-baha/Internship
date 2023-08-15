@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using HomeComponent.Model;
+using HomeComponent.Services;
+using Microsoft.AspNetCore.Components;
 using Telerik.Blazor.Components;
 using Telerik.FontIcons;
 using static Telerik.Blazor.ThemeConstants.Button;
@@ -7,8 +9,25 @@ namespace HomeComponent.Shared.HomePage
 {
     public partial class CardLayout
     {
-        [Parameter]
-        public List<string> ColumnHeaders { get; set; } 
+        [Inject]
+        public HomeUIService _Service { get; set; }
+        HomeUIConfiguration data = new HomeUIConfiguration
+        {
+            Params = new List<Dictionary<string, object>>()
+        };
+        protected override async Task OnInitializedAsync()
+        {
+
+            data = await _Service.GetHistoryAsync();
+
+        }
+
+        public List<string> ColumnHeaders = new List<string>
+        {
+            "Date",
+            "Type",
+            "N°Fiche"
+        };
         [Parameter]
         public string? CardLabel { get; set; }
         [Parameter]
@@ -19,20 +38,14 @@ namespace HomeComponent.Shared.HomePage
         new List<string> { "Data1-1", "Data1-2", "Data1-3" },
         new List<string> { "Data2-1", "Data2-2", "Data2-3" },
         new List<string> { "Data3-1", "Data3-2", "Data3-3" },
-          new List<string> { "Data1-1", "Data1-2", "Data1-3" },
+        new List<string> { "Data1-1", "Data1-2", "Data1-3" },
         new List<string> { "Data2-1", "Data2-2", "Data2-3" },
         new List<string> { "Data3-1", "Data3-2", "Data3-3" },
-          new List<string> { "Data1-1", "Data1-2", "Data1-3" },
+        new List<string> { "Data1-1", "Data1-2", "Data1-3" },
         new List<string> { "Data2-1", "Data2-2", "Data2-3" },
         new List<string> { "Data3-1", "Data3-2", "Data3-3" },
     };
 
-     List<string>  testcolumns = new List<string>
-    {
-        "Column Header 1",
-        "Column Header 2",
-        "Column Header 3",
-    };
 private RenderFragment RenderDynamicTable()
         {
             return builder =>
@@ -75,7 +88,7 @@ private RenderFragment RenderDynamicTable()
                     itemsBuilder.AddAttribute(23, "style", "width: 100%; border-collapse: separate; border-spacing: 0px 5px;");
                     // Render the table headers
                     itemsBuilder.OpenElement(24, "tr");
-                    foreach (var columnHeader in testcolumns)
+                    foreach (var columnHeader in ColumnHeaders)
                     {
                         itemsBuilder.OpenElement(25, "th");
                         itemsBuilder.AddContent(26, columnHeader);
@@ -83,11 +96,12 @@ private RenderFragment RenderDynamicTable()
                     }
                     itemsBuilder.CloseElement(); // Close the tr for headers
                                                  // Render the table data rows
-                    foreach (var rowData in test)
+                    foreach (Dictionary<string,object> rowData in data.Params)
                     {
                         itemsBuilder.OpenElement(27, "tr");
-                        foreach (var value in rowData)
+                        foreach (var value in rowData.Values)
                         {
+                            int i = 0; 
                             itemsBuilder.OpenElement(28, "td");
                             itemsBuilder.AddContent(29, value);
                             itemsBuilder.CloseElement();

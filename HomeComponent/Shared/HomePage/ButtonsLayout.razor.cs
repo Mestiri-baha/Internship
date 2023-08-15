@@ -1,10 +1,24 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using HomeComponent.Model;
+using HomeComponent.Services;
+using Microsoft.AspNetCore.Components;
 using Telerik.Blazor.Components;
 
 namespace HomeComponent.Shared.HomePage
 {
     public partial class ButtonsLayout 
     {
+        [Inject]
+        public HomeUIService _Service { get; set; }
+        HomeUIConfiguration data = new HomeUIConfiguration
+        {
+            Params = new List<Dictionary<string, object>>()
+        };
+        protected override async Task OnInitializedAsync()
+        {
+            
+             data = await _Service.GetShortcutsAsync();    
+
+        }
         [Parameter] public int Columns { get; set; } 
         [Parameter] public List<TileLayoutItemData> TileLayoutItemsData { get; set; }
 
@@ -36,16 +50,7 @@ namespace HomeComponent.Shared.HomePage
             "Task B",
         }
     },
-    new ButtonsLayout.TileLayoutItemData
-    {
-        GroupTitle = "Group 3",
-        ButtonColor = "green",
-        Tasks = new List<string>
-        {
-            "Task X",
-            "Task Y",
-        }
-    }
+    
 };
         private RenderFragment RenderButtonsLayout() => builder =>
         {
@@ -53,7 +58,7 @@ namespace HomeComponent.Shared.HomePage
             builder.AddAttribute(1, "class", "buttons");
             // Render the TelerikTileLayout
             builder.OpenComponent<TelerikTileLayout>(2);
-            builder.AddAttribute(3, "Columns", testData.Count);
+            builder.AddAttribute(3, "Columns", data.Params.Count);
             builder.AddAttribute(4, "RowHeight", "1fr"); // Set the RowHeight directly here or pass it as a parameter if needed
             builder.AddAttribute(5, "ColumnWidth", "1fr"); // Set the ColumnWidth directly here or pass it as a parameter if needed
             builder.AddAttribute(6, "Class", "Buttons-component");

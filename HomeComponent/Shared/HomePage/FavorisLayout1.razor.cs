@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using HomeComponent.Model;
+using HomeComponent.Services;
+using Microsoft.AspNetCore.Components;
 using Telerik.Blazor.Components;
 using Telerik.FontIcons;
 using static Telerik.Blazor.ThemeConstants.Button;
@@ -8,6 +10,18 @@ namespace HomeComponent.Shared.HomePage
     public partial class FavorisLayout1
     {
         [Parameter] public string Title { get; set;  } = "My Tile Layout";
+        [Inject]
+        public HomeUIService _Service { get; set; }
+        HomeUIConfiguration data = new HomeUIConfiguration
+        {
+            Params = new List<Dictionary<string, object>>()
+        };
+        protected override async Task OnInitializedAsync()
+        {
+
+            data = await _Service.GetFavouriteListAsync();
+
+        }
         [Parameter] public List<string> List_favoris { get; set;  } = new List<string>
     {
         "Link 1",
@@ -50,7 +64,7 @@ namespace HomeComponent.Shared.HomePage
             // Render the TileLayoutItems based on the data from List_favoris
             builder.AddAttribute(19, "TileLayoutItems", (RenderFragment)((itemsBuilder) =>
             {
-                foreach (var item in List_favoris)
+                foreach (var item in data.Params)
                 {
                     itemsBuilder.OpenComponent<TileLayoutItem>(20);
                     itemsBuilder.AddAttribute(21, "HeaderText", "");
@@ -59,7 +73,7 @@ namespace HomeComponent.Shared.HomePage
                         contentBuilder.OpenElement(23, "a");
                         contentBuilder.AddAttribute(24, "href", "#");
                         contentBuilder.AddAttribute(25, "style", "text-decoration: inherit; color: inherit");
-                        contentBuilder.AddContent(26, item);
+                        contentBuilder.AddContent(26, item["label"]);
                         contentBuilder.CloseElement();
                     }));
                     itemsBuilder.CloseComponent();

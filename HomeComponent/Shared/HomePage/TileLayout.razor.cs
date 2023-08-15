@@ -1,4 +1,6 @@
 ﻿// Define the properties that you want to make generic
+using HomeComponent.Model;
+using HomeComponent.Services;
 using Microsoft.AspNetCore.Components;
 using Telerik.Blazor.Components;
 using Telerik.FontIcons;
@@ -9,6 +11,18 @@ namespace HomeComponent.Shared.HomePage
 {
     public partial class TileLayout
     {
+        [Inject]
+        public HomeUIService _Service { get; set; }
+        HomeUIConfiguration data = new HomeUIConfiguration
+        {
+            Params = new List<Dictionary<string, object>>()
+        };
+        protected override async Task OnInitializedAsync()
+        {
+
+            data = await _Service.GetActionsAsync();
+
+        }
         [Parameter] public RenderFragment svgIcon { get; set; }
         [Parameter] public RenderFragment ChildContent { get; set; }
         [Parameter] 
@@ -30,7 +44,7 @@ namespace HomeComponent.Shared.HomePage
 
             builder.AddAttribute(8, "TileLayoutItems", (RenderFragment)((itemsBuilder) =>
             {
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < data.Params.Count; i++)
                 {
                     itemsBuilder.OpenComponent<TileLayoutItem>(9);
                     itemsBuilder.AddAttribute(10, nameof(TileLayoutItem.RowSpan), 1);
