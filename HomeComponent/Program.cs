@@ -17,7 +17,7 @@ builder.Services.AddTelerikBlazor();
 builder.Services.AddHttpClient<HomeUIService>(
     client =>
     {
-        client.BaseAddress = new Uri("http://localhost:61893/HomePage");
+        client.BaseAddress = new Uri("http://localhost:50717/HomePage");
     });
 //builder.Services.AddCors(options =>
 //{

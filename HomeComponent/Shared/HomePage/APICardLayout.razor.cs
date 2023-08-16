@@ -97,11 +97,14 @@ namespace HomeComponent.Shared.HomePage
                }
            }
 
+           
+           builder.OpenElement(13, "a");
+           builder.AddAttribute(14, "href", "https://www.salviadeveloppement.fr/hotfix-2-de-salvia-patrimoine-v23-0/");
+           builder.AddAttribute(14, "target", "_blank");
+
            builder.OpenElement(10, "Button");
            builder.AddAttribute(11, "Class", "btn");
-           builder.AddContent(12, "Toutes Les Actualités");
-           builder.OpenElement(8, "a");
-           builder.AddAttribute(9, "href", "https://www.salviadeveloppement.fr/hotfix-2-de-salvia-patrimoine-v23-0/");
+           builder.AddContent(12, "Toutes Les Actualitées");
            builder.CloseElement();
            builder.CloseElement();
 
