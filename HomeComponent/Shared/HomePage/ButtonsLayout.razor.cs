@@ -1,6 +1,7 @@
 ﻿using HomeComponent.Model;
 using HomeComponent.Services;
 using Microsoft.AspNetCore.Components;
+using System.Drawing;
 using Telerik.Blazor.Components;
 
 namespace HomeComponent.Shared.HomePage
@@ -9,6 +10,7 @@ namespace HomeComponent.Shared.HomePage
     {
         [Inject]
         public HomeUIService _Service { get; set; }
+        //for tomorrow : change the size of big container to 35% margin-left: 1rem; headerUI : margin-bottom: 0.5rem;
         HomeUIConfiguration data = new HomeUIConfiguration
         {
             Params = new List<Dictionary<string, object>>()
@@ -66,7 +68,7 @@ namespace HomeComponent.Shared.HomePage
             builder.AddAttribute(8, "Reorderable", true);
             builder.AddAttribute(9, "TileLayoutItems", (RenderFragment)((itemsBuilder) =>
             {
-                foreach (var tileLayoutItemData in testData)
+                foreach (var items in data.Params)
                 {
                     itemsBuilder.OpenComponent<TileLayoutItem>(10);
                     itemsBuilder.AddAttribute(22, "Content", (RenderFragment)((contentBuilder) =>
@@ -74,20 +76,22 @@ namespace HomeComponent.Shared.HomePage
                         contentBuilder.OpenElement(12, "div");
                         contentBuilder.AddAttribute(13, "style", "display: flex; flex-direction: column;");
                         contentBuilder.OpenElement(14, "h1");
-                        contentBuilder.AddAttribute(15, "style", "font-size: medium; margin-bottom: 20px; font-weight: bold;");
-                        contentBuilder.AddContent(16, tileLayoutItemData.GroupTitle);
+                        contentBuilder.AddAttribute(15, "style", "font-size: 12px ; margin-bottom: 20px; font-weight: bold;");
+                        contentBuilder.AddContent(16, items["label"]);
                         contentBuilder.CloseElement(); // Close the <h1> element
                         contentBuilder.OpenElement(17, "div");
                         contentBuilder.AddAttribute(18, "style", "display: flex; flex-direction: column; gap: 20px; align-self: center;");
-                        foreach (var task in tileLayoutItemData.Tasks)
+                        foreach (var item in ((items.Values).Skip(1)))
                         {
                             contentBuilder.OpenElement(19, "button");
                             contentBuilder.AddAttribute(20, "href", "#");
                             contentBuilder.AddAttribute(21, "class", "custom-button");
-                            contentBuilder.AddAttribute(22, "style", $"color: {tileLayoutItemData.ButtonColor}; border-color: {tileLayoutItemData.ButtonColor};");
-                            contentBuilder.AddContent(23, task);
+                            contentBuilder.AddAttribute(22, "style", $"color: {Color.Green} !important; border-color: {Color.Green};");
+                            contentBuilder.AddContent(23, "test");
                             contentBuilder.CloseElement(); // Close the <button> element
                         }
+                       
+                        
                         contentBuilder.CloseElement(); // Close the <div> element
                         contentBuilder.CloseElement(); // Close the <div> element
 

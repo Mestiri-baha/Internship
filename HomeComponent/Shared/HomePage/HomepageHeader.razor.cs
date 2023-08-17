@@ -27,7 +27,7 @@ namespace HomeComponent.Shared.HomePage
             RenderFragment fragment = builder =>
             {
                 builder.OpenElement(0, "div");
-                builder.AddAttribute(1, "style", "display: flex; justify-content: space-between; font-size: small;");
+                builder.AddAttribute(1, "style", "display: flex; justify-content: space-between; font-size: small; margin-bottom: 0.5rem ; margin-left: 1rem ; ");
 
                 // Render "Bienvenue @user"
                 builder.OpenElement(2, "h6");
@@ -42,7 +42,7 @@ namespace HomeComponent.Shared.HomePage
 
                 // Render the right-side section with three h6 elements
                 builder.OpenElement(4, "div");
-                builder.AddAttribute(5, "style", "display: flex; gap: 26px;");
+                builder.AddAttribute(5, "style", "display: flex; gap: 26px; ");
 
                 // Render "Mon Compte Client"
                 builder.OpenElement(6, "h6");
@@ -52,12 +52,16 @@ namespace HomeComponent.Shared.HomePage
                 builder.AddAttribute(7, nameof(TelerikFontIcon.Class), "custom-font-icon-class ");
                 builder.AddAttribute(8, nameof(TelerikFontIcon.ThemeColor), ThemeColor.Base);
                 builder.CloseComponent();
+                builder.OpenElement(9, "span"); 
+                builder.AddAttribute(11, "style", "font-size: 14px ; ");
                 builder.AddContent(7, "Mon Compte Client");
+                builder.CloseElement();
+
                 builder.CloseElement();
                 builder.OpenElement(8, "h6");
                 builder.OpenElement(9, "a");
                 builder.AddAttribute(10, "href", "http://salviadeveloppement.com");
-                builder.AddAttribute(11, "style", "color : inherit ; text-decoration : none"); 
+                builder.AddAttribute(11, "style", "color : inherit ; text-decoration : none ; font-size: 14px ; "); 
                 builder.AddContent(12, "salviadeveloppement.com");
                 builder.CloseElement();
                 builder.CloseElement();
@@ -69,7 +73,11 @@ namespace HomeComponent.Shared.HomePage
                 builder.AddAttribute(16, nameof(TelerikFontIcon.Class), "custom-font-icon-class ");
                 builder.AddAttribute(17, nameof(TelerikFontIcon.ThemeColor), ThemeColor.Base);
                 builder.CloseComponent();
+                builder.OpenElement(9, "span");
+                builder.AddAttribute(11, "style", "font-size: 14px ; ");
                 builder.AddContent(18, "Paramètres");
+                builder.CloseElement();
+
                 builder.CloseElement();
 
                 builder.CloseElement(); // Close the div for the right-side section

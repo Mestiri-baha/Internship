@@ -27,14 +27,15 @@ width : 300px ;
     width: 100%;
 }
 .card {
-    width: 49%;
-/*    border: 2px solid black !important ;
-*/    margin-bottom: 2rem;
+    width: 40% ;
+    /*    border: 2px solid black !important ;
+*/ margin-bottom: 2rem;
 }
 .buttons {
     /*it was before 49 % both of them */
-    width: 49%;
-   /* border: 2px solid black;*/
+    width: 35%;
+    margin-left: 1rem;
+    /* border: 2px solid black;*/
     margin-bottom: 1rem;
 }
 .second-parent-container {
@@ -44,14 +45,14 @@ width : 300px ;
     
 }
 .favoris1 {
-    width: 49%;
-/*    border: 2px solid black;
-*/   /* margin-top: 2rem; */
+    width: 45%;
+    /*    border: 2px solid black;
+*/ /* margin-top: 2rem; */
 }
 .favoris2 {
-    width: 49%;
-/*    border: 2px solid black;
-*/    /*margin-top: 2rem;*/
+    width: 45%;
+    /*    border: 2px solid black;
+*/ /*margin-top: 2rem;*/
 }
 .card {
     border: none;

@@ -11,6 +11,7 @@ namespace HomeComponent.Shared.HomePage
     {
         [Parameter] public string Title { get; set;  } = "My Tile Layout";
         [Inject]
+       
         public HomeUIService _Service { get; set; }
         HomeUIConfiguration data = new HomeUIConfiguration
         {
@@ -22,21 +23,14 @@ namespace HomeComponent.Shared.HomePage
             data = await _Service.GetFavouriteListAsync();
 
         }
-        [Parameter] public List<string> List_favoris { get; set;  } = new List<string>
-    {
-        "Link 1",
-        "Link 2",
-        "Link 3",
-        "Link 4",
-        "Link 5"
-    };
+  
         private RenderFragment CreateListFavouriteContent() => builder =>
         {
             builder.OpenElement(0, "div");
             builder.AddAttribute(1, "class", "favourite");
             // Render the title
             builder.OpenElement(2, "h1");
-            builder.AddAttribute(3, "style", "font-size: medium; margin-top: 20px; margin-left: 1rem; margin-bottom: 22px;");
+            builder.AddAttribute(3, "style", "font-size: 14px; margin-top: 20px; margin-left: 1rem; margin-bottom: 22px; font-weight: bolder ; ");
             builder.OpenElement(3, "br");
             builder.CloseElement();
             builder.OpenComponent<TelerikFontIcon>(4);
@@ -72,7 +66,7 @@ namespace HomeComponent.Shared.HomePage
                     {
                         contentBuilder.OpenElement(23, "a");
                         contentBuilder.AddAttribute(24, "href", "#");
-                        contentBuilder.AddAttribute(25, "style", "text-decoration: inherit; color: inherit");
+                        contentBuilder.AddAttribute(25, "style", "text-decoration: inherit; color: inherit ; font-size: 14px ; margin-bottom: 1rem; margin-top : 1rem ; font-family: math;");
                         contentBuilder.AddContent(26, item["label"]);
                         contentBuilder.CloseElement();
                     }));

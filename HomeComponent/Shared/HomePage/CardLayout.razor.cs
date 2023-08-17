@@ -1,6 +1,7 @@
 ﻿using HomeComponent.Model;
 using HomeComponent.Services;
 using Microsoft.AspNetCore.Components;
+using System.Linq;
 using Telerik.Blazor.Components;
 using Telerik.FontIcons;
 using static Telerik.Blazor.ThemeConstants.Button;
@@ -54,7 +55,7 @@ private RenderFragment RenderDynamicTable()
                 builder.AddAttribute(1, "class", "Card");
                 // Render the title
                 builder.OpenElement(2, "h1");
-                builder.AddAttribute(3, "style", "font-size: medium; margin-left: 1rem; margin-bottom: 10px; margin-top: 10px; ");
+                builder.AddAttribute(3, "style", "font-size: 14px; margin-left: 1rem; margin-bottom: 10px; margin-top: 10px; font-weight : bolder ;");
                 //builder.OpenElement(3, "br");
                 //builder.CloseElement();
                 builder.OpenComponent<TelerikFontIcon>(4);
@@ -88,10 +89,13 @@ private RenderFragment RenderDynamicTable()
                     itemsBuilder.AddAttribute(23, "style", "width: 100%; border-collapse: separate; border-spacing: 0px 5px;");
                     // Render the table headers
                     itemsBuilder.OpenElement(24, "tr");
+
                     foreach (var columnHeader in ColumnHeaders)
                     {
                         itemsBuilder.OpenElement(25, "th");
-                        itemsBuilder.AddContent(26, columnHeader);
+                        itemsBuilder.AddAttribute(26, "Class", "th_style");
+
+                        itemsBuilder.AddContent(27, columnHeader);
                         itemsBuilder.CloseElement();
                     }
                     itemsBuilder.CloseElement(); // Close the tr for headers
@@ -99,11 +103,24 @@ private RenderFragment RenderDynamicTable()
                     foreach (Dictionary<string,object> rowData in data.Params)
                     {
                         itemsBuilder.OpenElement(27, "tr");
-                        foreach (var value in rowData.Values)
+                        foreach (var value in rowData.Values.Take(rowData.Values.Count - 1))
                         {
-                            int i = 0; 
+                            int i = 0;
                             itemsBuilder.OpenElement(28, "td");
+                            itemsBuilder.AddAttribute(26, "Class", "td_style");
+                            int test;
+                            bool success = int.TryParse(value.ToString(), out test);
+                            if (test != 0)
+                            {
+                                itemsBuilder.OpenElement(27, "a");
+                                itemsBuilder.AddAttribute(28, "href", "");
+                                itemsBuilder.AddContent(28, value);
+                                itemsBuilder.CloseComponent();
+
+                            }
+                            else { 
                             itemsBuilder.AddContent(29, value);
+                        }
                             itemsBuilder.CloseElement();
                         }
                         itemsBuilder.CloseElement(); // Close the tr for data row

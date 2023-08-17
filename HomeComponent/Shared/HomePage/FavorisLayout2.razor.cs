@@ -22,21 +22,13 @@ namespace HomeComponent.Shared.HomePage
             data = await _Service.GetReportsAsync();
 
         }
-        [Parameter] public List<string> Fav_List2 { get; set;  } = new List<string>
-    {
-        "etat 1",
-        "etat 2",
-        "etat 3",
-        "etat 4",
-        "etat 5"
-    };
         private RenderFragment CreateStateListContent() => builder =>
         {
             builder.OpenElement(0, "div");
             builder.AddAttribute(1, "class", "favourite");
             // Render the title
             builder.OpenElement(2, "h1");
-            builder.AddAttribute(3, "style", "font-size: medium; margin-top: 20px; margin-left: 1rem; margin-bottom: 22px;");
+            builder.AddAttribute(3, "style", "font-size: 14px; margin-top: 20px; margin-left: 1rem; margin-bottom: 22px; font-weight: bolder ; ");
             builder.OpenElement(3, "br");
             builder.CloseElement();
             builder.OpenComponent<TelerikFontIcon>(4);
@@ -54,10 +46,11 @@ namespace HomeComponent.Shared.HomePage
             builder.OpenComponent<TelerikTileLayout>(6);
             builder.AddAttribute(7, "Columns", 4);
             builder.AddAttribute(8, "Class", "tile-items-style2");
-            builder.AddAttribute(9, "RowHeight", "1fr");
+            builder.AddAttribute(9, "RowHeight", "0.5fr");
             builder.AddAttribute(10, "ColumnWidth", "2fr");
             builder.AddAttribute(11, "Resizable", true);
             builder.AddAttribute(12, "Reorderable", true);
+            builder.AddAttribute(18, "Class", "tile-items-style");
 
             // Render the TileLayoutItems based on the data from Fav_List2
             builder.AddAttribute(13, "TileLayoutItems", (RenderFragment)((itemsBuilder) =>
@@ -65,12 +58,13 @@ namespace HomeComponent.Shared.HomePage
                 foreach (var item in data.Params)
                 {
                     itemsBuilder.OpenComponent<TileLayoutItem>(14);
+                    itemsBuilder.AddAttribute(15, "Class", "data_style");
                     itemsBuilder.AddAttribute(15, "HeaderText", "");
                     itemsBuilder.AddAttribute(16, "Content", (RenderFragment)((contentBuilder) =>
                     {
                         contentBuilder.OpenElement(17, "a");
                         contentBuilder.AddAttribute(18, "href", "#");
-                        contentBuilder.AddAttribute(19, "style", "text-decoration: inherit; color: inherit");
+                        contentBuilder.AddAttribute(19, "style", "text-decoration: inherit; color: inherit ; font-family: math;");
                         contentBuilder.AddContent(20, item["label"]);
                         contentBuilder.CloseElement();
                     }));

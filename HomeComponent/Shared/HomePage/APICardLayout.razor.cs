@@ -75,7 +75,7 @@ namespace HomeComponent.Shared.HomePage
                    {
                    builder.OpenElement(0, "div");
                    builder.OpenElement(1, "h3");
-                   builder.AddAttribute(1, "style", "font-size: 12px; font-weight : bold ; margin : 0px ;");
+                   builder.AddAttribute(1, "style", "font-size: 12px; font-weight : bolder ; margin : 0px ;");
                    builder.AddContent(3, item["title"]);
                    builder.CloseElement();
                    builder.OpenElement(4, "h4");
