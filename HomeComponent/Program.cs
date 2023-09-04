@@ -21,6 +21,7 @@ builder.Services.AddHttpClient<HomeUIService>(
 
 
     });
+
 //builder.Services.AddCors(options =>
 //{
 //    options.AddDefaultPolicy(builder =>
