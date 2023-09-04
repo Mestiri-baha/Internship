@@ -1,3 +1,4 @@
+using Blazored.LocalStorage;
 using HomeComponent;
 using HomeComponent.Services;
 using Microsoft.AspNetCore.Components.Web;
@@ -31,6 +32,6 @@ builder.Services.AddHttpClient<HomeUIService>(
 //});
 //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:54349") });
 //builder.Services.AddSingleton<HomeUIService>();
-
+builder.Services.AddBlazoredLocalStorage(); 
 var app = builder.Build();
 await app.RunAsync();

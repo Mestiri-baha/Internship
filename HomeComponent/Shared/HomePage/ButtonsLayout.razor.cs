@@ -1,8 +1,10 @@
-﻿using HomeComponent.Model;
+﻿using Blazored.LocalStorage;
+using HomeComponent.Model;
 using HomeComponent.Services;
 using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Net.Http.Headers;
 using System.Text.Json;
 using Telerik.Blazor.Components;
 
@@ -12,6 +14,9 @@ namespace HomeComponent.Shared.HomePage
     {
         [Inject]
         public HomeUIService _Service { get; set; }
+
+        private ILocalStorageService _localStorage ; 
+       
         //for tomorrow : change the size of big container to 35% margin-left: 1rem; headerUI : margin-bottom: 0.5rem;
         HomeUIConfiguration data = new HomeUIConfiguration
         {
@@ -20,7 +25,8 @@ namespace HomeComponent.Shared.HomePage
         protected override async Task OnInitializedAsync()
         {
             
-             data = await _Service.GetShortcutsAsync();    
+             data = await _Service.GetShortcutsAsync();
+            Cache = await _localStorage.GetItemAsStringAsync(""); 
 
         }
         [Parameter] public int Columns { get; set; } 
