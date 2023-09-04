@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using DocumentFormat.OpenXml.Drawing;
+using System.Drawing;
 
 namespace HomeComponent.Shared.HomePage
 {
@@ -28,5 +29,6 @@ namespace HomeComponent.Shared.HomePage
             return  string.Format("{0:x}{1:x}{2:x}", c.R, c.G, c.B);
 
         }
+        
     }
 }

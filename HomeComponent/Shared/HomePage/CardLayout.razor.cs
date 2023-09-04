@@ -34,18 +34,6 @@ namespace HomeComponent.Shared.HomePage
         [Parameter]
         public List<List<string>> DataRows { get; set; }
 
-        List<List<string>> test = new List<List<string>>
-    {
-        new List<string> { "Data1-1", "Data1-2", "Data1-3" },
-        new List<string> { "Data2-1", "Data2-2", "Data2-3" },
-        new List<string> { "Data3-1", "Data3-2", "Data3-3" },
-        new List<string> { "Data1-1", "Data1-2", "Data1-3" },
-        new List<string> { "Data2-1", "Data2-2", "Data2-3" },
-        new List<string> { "Data3-1", "Data3-2", "Data3-3" },
-        new List<string> { "Data1-1", "Data1-2", "Data1-3" },
-        new List<string> { "Data2-1", "Data2-2", "Data2-3" },
-        new List<string> { "Data3-1", "Data3-2", "Data3-3" },
-    };
 
 private RenderFragment RenderDynamicTable()
         {
@@ -64,7 +52,7 @@ private RenderFragment RenderDynamicTable()
                 builder.AddAttribute(7, nameof(TelerikFontIcon.Class), "custom-font-icon-class ");
                 builder.AddAttribute(8, nameof(TelerikFontIcon.ThemeColor), ThemeColor.Success);
                 builder.CloseComponent();
-                builder.AddContent(9, "Fake History");
+                builder.AddContent(9, "Dernières modifications");
                 builder.CloseElement(); // Close the <h1> element
                                         // Render the table
                 builder.OpenComponent<TelerikTileLayout>(5);
@@ -103,17 +91,27 @@ private RenderFragment RenderDynamicTable()
                     foreach (Dictionary<string,object> rowData in data.Params)
                     {
                         itemsBuilder.OpenElement(27, "tr");
-                        foreach (var value in rowData.Values.Take(rowData.Values.Count - 1))
+                        var action = rowData["Action"];
+                        var numfiche = rowData["NumFiche"];
+                        itemsBuilder.OpenElement(28, "td");
+                        itemsBuilder.AddAttribute(29, "style", "font-weight: bolder ; font-size: 13px;");
+                        itemsBuilder.AddContent(30, $"{rowData["date"]}");
+                        itemsBuilder.CloseComponent();
+
+                        foreach (var value in rowData.Values.Skip(1).Take(rowData.Values.Count-2))
                         {
                             int i = 0;
+                            Console.WriteLine(value); 
                             itemsBuilder.OpenElement(28, "td");
                             itemsBuilder.AddAttribute(26, "Class", "td_style");
-                            int test;
+                            int test ;
                             bool success = int.TryParse(value.ToString(), out test);
                             if (test != 0)
                             {
                                 itemsBuilder.OpenElement(27, "a");
-                                itemsBuilder.AddAttribute(28, "href", "");
+                                //Action will be put here ! 
+                                itemsBuilder.AddAttribute(28, "href", $"https://localhost:7194/HomeUI?action={action}&NumFiche={numfiche}");
+                                itemsBuilder.AddAttribute(28, "Style", "font-weight: bold ;"); 
                                 itemsBuilder.AddContent(28, value);
                                 itemsBuilder.CloseComponent();
 

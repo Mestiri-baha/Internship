@@ -1,32 +1,36 @@
-﻿@CreateTileLayoutContent() ; 
-        <style>
-           .CardsTile .k-tilelayout {
-               background-color : transparent ; 
-           }
-            .CardsTile .k-tilelayout .k-card {
-        border-width: 2px !important ; 
+﻿@CreateTileLayoutContent() 
+<style>
+    .CardsTile .k-tilelayout {
+        background-color: transparent;
     }
-            .task-list1
-            {
-                 max-width : 1455px  ; 
-                /*min-width : 400px  ; */
-                width: 100% ; 
-                overflow-x : auto ; 
-                display: flex ; 
-            }
-            .task-list1::-webkit-scrollbar {
-                display: none; 
-                width: 0;  
-                background: transparent;  
-}
-            .task-list1 > div {
-                min-width : 185px ; 
-           }
-              .Child 
-              {
-                  padding :  0px ; 
-              }
-              .custom-font-icon-class {
-               margin-right: 10px;
-              }
-        </style>
+
+        .CardsTile .k-tilelayout .k-card {
+            border-width: 2px !important;
+        }
+
+    .task-list1 {
+        max-width: 1455px;
+        /*min-width : 400px  ; */
+        width: 100%;
+        overflow-x: auto;
+        display: flex;
+    }
+
+        .task-list1::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            background: transparent;
+        }
+
+        .task-list1 > div {
+            min-width: 185px;
+        }
+
+    .Child {
+        padding: 0px;
+    }
+
+    .custom-font-icon-class {
+        margin-right: 10px;
+    }
+</style>

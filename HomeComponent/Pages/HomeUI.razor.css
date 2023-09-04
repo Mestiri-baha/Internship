@@ -37,9 +37,11 @@ width : 300px ;
     margin-left: 1rem;
     /* border: 2px solid black;*/
     margin-bottom: 1rem;
+    background-color: white;
 }
+
 .second-parent-container {
-    display : flex ; 
+    display : flex !important; 
     width : 100% ; 
     gap: 16px ; 
     

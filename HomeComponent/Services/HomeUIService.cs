@@ -11,7 +11,7 @@ namespace HomeComponent.Services
         {
 
             _httpClient = httpClient;
-           
+
 
         }
         public async Task<HomeUIConfiguration> GetHistoryAsync()
@@ -24,7 +24,7 @@ namespace HomeComponent.Services
         }
         public async Task<HomeUIConfiguration> GetShortcutsAsync()
         {
-            return await _httpClient.GetFromJsonAsync<HomeUIConfiguration>(_httpClient.BaseAddress   + "/GetShortcuts");
+            return await _httpClient.GetFromJsonAsync<HomeUIConfiguration>(_httpClient.BaseAddress + "/GetShortcuts");
         }
         public async Task<HomeUIConfiguration> GetFavouriteListAsync()
         {
@@ -47,5 +47,18 @@ namespace HomeComponent.Services
             return await _httpClient.GetFromJsonAsync<HomeUIConfiguration>(_httpClient.BaseAddress + "/GetNews");
         }
 
+        public async void  DoAction(object action)
+        {
+            Dictionary<string,object> ActiontoInvoke = new Dictionary<string,object>()
+            {
+                { "Action",action }
+            };
+           await _httpClient.PostAsJsonAsync<Dictionary<string,object>>(_httpClient.BaseAddress + "/DoAction", ActiontoInvoke); 
+            
+         
+        }
+
     }
+
+
 }

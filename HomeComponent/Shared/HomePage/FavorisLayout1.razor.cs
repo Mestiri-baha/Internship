@@ -23,7 +23,10 @@ namespace HomeComponent.Shared.HomePage
             data = await _Service.GetFavouriteListAsync();
 
         }
-  
+        public void ActionsEventHandler(string action)
+        {
+            _Service.DoAction(action);
+        }
         private RenderFragment CreateListFavouriteContent() => builder =>
         {
             builder.OpenElement(0, "div");
@@ -39,7 +42,7 @@ namespace HomeComponent.Shared.HomePage
             builder.AddAttribute(7, nameof(TelerikFontIcon.Class), "custom-font-icon-class ");
             builder.AddAttribute(8, nameof(TelerikFontIcon.ThemeColor), ThemeColor.Warning);
             builder.CloseComponent();
-            builder.AddContent(9, " Fake Favourite List");
+            builder.AddContent(9, "Mes listes favorites");
             builder.CloseElement(); // Close the <h1> element
 
             // Render the container div for the TelerikTileLayout
@@ -51,7 +54,7 @@ namespace HomeComponent.Shared.HomePage
             builder.AddAttribute(13, "Columns", 4); // Change this to use a variable if needed
             builder.AddAttribute(14, "RowHeight", "1fr");
             builder.AddAttribute(15, "ColumnWidth", "2fr");
-            builder.AddAttribute(16, "Resizable", true);
+            builder.AddAttribute(16, "Resizable", false);
             builder.AddAttribute(17, "Reorderable", true);
             builder.AddAttribute(18, "Class", "tile-items-style");
 
@@ -63,9 +66,11 @@ namespace HomeComponent.Shared.HomePage
                     itemsBuilder.OpenComponent<TileLayoutItem>(20);
                     itemsBuilder.AddAttribute(21, "HeaderText", "");
                     itemsBuilder.AddAttribute(22, "Content", (RenderFragment)((contentBuilder) =>
-                    {
+                    {   
                         contentBuilder.OpenElement(23, "a");
-                        contentBuilder.AddAttribute(24, "href", "#");
+                        contentBuilder.AddAttribute(23, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this,
+                                                                   () => ActionsEventHandler(item["Action"].ToString())));
+                        contentBuilder.AddAttribute(24, "href", $"http://localhost:54969/HomePage/action={item["Action"]}"+$"&numsep={item["numSep"]}"+ $"&codeSep={item["CodeSep"]}"+ $"&dataType={item["Datatype"]}");
                         contentBuilder.AddAttribute(25, "style", "text-decoration: inherit; color: inherit ; font-size: 14px ; margin-bottom: 1rem; margin-top : 1rem ; font-family: math;");
                         contentBuilder.AddContent(26, item["label"]);
                         contentBuilder.CloseElement();
@@ -73,7 +78,6 @@ namespace HomeComponent.Shared.HomePage
                     itemsBuilder.CloseComponent();
                 }
             }));
-
             builder.CloseComponent(); // Close the TelerikTileLayout component
             builder.CloseElement(); // Close the container div for the TelerikTileLayout
             builder.CloseElement(); // Close the <div class='CardsTile'> element

@@ -20,11 +20,14 @@ namespace HomeComponent.Shared.HomePage
         {
             data = await _Service.GetControlsAsync(); 
         }
+        public void ActionsEventHandler(string url)
+        {
+            _Service.DoAction(url);
+        }
         private RenderFragment CreateTileLayoutContent() => builder =>
         {
             builder.OpenElement(0, "div");
             builder.AddAttribute(1, "class", "CardsTile");
-
             // Render the title
             builder.OpenElement(2, "h1");
             builder.AddAttribute(3, "style", "font-size: medium; margin-top: 20px; margin-left: 1rem;  margin-bottom: 22px;");
@@ -45,7 +48,6 @@ namespace HomeComponent.Shared.HomePage
             builder.AddAttribute(16, "Resizable", false);
             builder.AddAttribute(17, "RowSpacing", "0px");
             builder.AddAttribute(18, "Reorderable", true);
-
             builder.AddAttribute(19, "TileLayoutItems", (RenderFragment)((itemsBuilder) =>
             {
                 // Render multiple TileLayoutItems based on the data from the JSON file
@@ -54,39 +56,35 @@ namespace HomeComponent.Shared.HomePage
                     var item = data.Params[i];  
                     // Render a single TileLayoutItem
                     itemsBuilder.OpenComponent<TileLayoutItem>(20);
-                    
                     itemsBuilder.AddAttribute(21, "Class", "Child");
                     // Render the content (number + text) for each TileLayoutItem
                     itemsBuilder.AddAttribute(22, "Content", (RenderFragment)((contentBuilder) =>
                     {
-                       
-                        contentBuilder.OpenElement(24, "a");
+                        contentBuilder.OpenElement(23, "a");
                         contentBuilder.AddAttribute(24, "style", "text-decoration: inherit; color: inherit;");
-                        contentBuilder.AddAttribute(24, "href", $"{item["URL"]}");
-                        contentBuilder.OpenElement(23, "div");
-                        contentBuilder.OpenElement(23, "br");
-                        contentBuilder.CloseElement();
-
-                        // Apply the orange color to the number
-                        contentBuilder.OpenElement(24, "span");
-                        contentBuilder.AddAttribute(25, "style", "color: orange; font-weight: bold ; font-size : 24px ;");
-                        contentBuilder.AddContent(26, item["count"]); // Replace "number" with the actual number value
-                        contentBuilder.CloseElement();
-                        contentBuilder.OpenElement(27, "br");
-                        contentBuilder.CloseElement();
+                        contentBuilder.AddAttribute(25, "href",$"http://localhost:50742/HomePage/action={item["Action"]}"); 
+                        contentBuilder.AddAttribute(26,"onclick",Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this,() => ActionsEventHandler(item["Action"].ToString())));
+                        contentBuilder.OpenElement(27, "div");
                         contentBuilder.OpenElement(28, "br");
                         contentBuilder.CloseElement();
+                        // Apply the orange color to the number
+                        contentBuilder.OpenElement(29, "span");
+                        contentBuilder.AddAttribute(30, "style", "color: orange; font-weight: bold ; font-size : 24px ;");
+                        contentBuilder.AddContent(31, item["count"]); // Replace "number" with the actual number value
+                        contentBuilder.CloseElement();
+                        contentBuilder.OpenElement(32, "br");
+                        contentBuilder.CloseElement();
+                        contentBuilder.OpenElement(33, "br");
+                        contentBuilder.CloseElement();
                         // Add the text content
-                        contentBuilder.OpenElement(24, "span");
-                        contentBuilder.AddAttribute(25, "style", "color: black ; font-size : 10.5px ;");
-                        contentBuilder.AddContent(29, item["label"]);
+                        contentBuilder.OpenElement(34, "span");
+                        contentBuilder.AddAttribute(35, "style", "color: black ; font-size : 10.5px ;");
+                        contentBuilder.AddContent(36, item["label"]);
                         contentBuilder.CloseElement();
-                        contentBuilder.OpenElement(30, "br");
+                        contentBuilder.OpenElement(37, "br");
                         contentBuilder.CloseElement();
                         contentBuilder.CloseElement();
                         contentBuilder.CloseElement();
-
-
                     }));
                     itemsBuilder.CloseComponent();
                 }
